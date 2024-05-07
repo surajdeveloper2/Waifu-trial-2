@@ -34,9 +34,15 @@ async def start(update: Update, context: CallbackContext) -> None:
         
         
         caption = f"""
-        ***Heyyyy...***
+        ***Hᴇʏ ᴛʜᴇʀᴇ, Gʀᴀʙʙᴇʀ! 🥀...***
 
-***I am An Open Source Character Catcher Bot...​Add Me in Your group.. And I will send Random Characters After.. every 100 messages in Group... Use /guess to.. Collect that Characters in Your Collection.. and see Collection by using /Harem... So add in Your groups and Collect Your harem***
+***I ᴀᴍ ᴀɴ ᴀɴɪᴍᴇ-ᴛʜᴇᴍᴇᴅ Wᴀɪғᴜ ʙᴏᴛ, ʜᴇʀᴇ ᴛᴏ ᴀᴅᴅ ᴀ ᴛᴏᴜᴄʜ ᴏғ ᴍᴀɢɪᴄ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ. Aᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ, ᴀɴᴅ I'ʟʟ ᴡᴏʀᴋ ᴍʏ ᴄʜᴀʀᴍ ʙʏ sᴘᴀᴡɴɪɴɢ ᴡᴀɪғᴜs ᴀғᴛᴇʀ ᴇᴠᴇʀʏ 𝟷𝟶𝟶 ᴍᴇssᴀɢᴇs! 💫***
+
+***Tᴏ ɢʀᴀʙ ᴛʜᴇsᴇ ᴇɴᴄʜᴀɴᴛɪɴɢ ᴡᴀɪғᴜs, sɪᴍᴘʟʏ ᴜsᴇ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ /grab <ᴡᴀɪғᴜ ɴᴀᴍᴇ>. Aɴᴅ ᴛʜᴀᴛ's ɴᴏᴛ ᴀʟʟ! Yᴏᴜ ᴄᴀɴ ᴋᴇᴇᴘ ᴛʀᴀᴄᴋ ᴏғ ʏᴏᴜʀ ʜᴀʀᴇᴍ ʙʏ ᴜsɪɴɢ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅs /harem ᴏʀ /mywaifus. 🌸***
+
+***Gᴇᴛ ʀᴇᴀᴅʏ ғᴏʀ ᴀ ᴛʜʀɪʟʟɪɴɢ ᴇxᴘᴇʀɪᴇɴᴄᴇ ᴏғ ᴡᴀɪғᴜ ɢʀᴀʙʙɪɴɢ, ғɪʟʟᴇᴅ ᴡɪᴛʜ Jᴏʏ ᴀɴᴅ ᴇxᴄɪᴛᴇᴍᴇɴᴛ! 💐***
+
+***Tʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴄʜᴏᴏsɪɴɢ ᴍᴇ ᴀs ʏᴏᴜʀ ᴄᴏᴍᴘᴀɴɪᴏɴ ᴏɴ ᴛʜɪs ғᴀɴᴛᴀsᴛɪᴄ Jᴏᴜʀɴᴇʏ! 🌸***
         """
         
         keyboard = [
