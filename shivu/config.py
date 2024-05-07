@@ -7,7 +7,7 @@ class Config(object):
     GROUP_ID = -1002001602255
     TOKEN = "7165106534:AAGrNNJMhqMlnt2z1uGOlwDD8yBMyqgaVOw"
     mongo_url = "mongodb+srv://nksharmas9835:waifu@cluster0.ouufhhw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-    PHOTO_URL = ["https://graph.org/file/6d2dc744b00d2a40c5c55.jpg", "https://graph.org/file/cf556fb30cd3e40b0f57b.jpg"]
+    PHOTO_URL = ["https://telegra.ph/file/44b149b62ce6d35237244.jpg", "https://telegra.ph/file/46dae6c6173cf538b2cdf.jpg"]
     SUPPORT_CHAT = "waifu_support_group"
     UPDATE_CHAT = "waifu_support_group"
     BOT_USERNAME = "Waifu_Station_Bot"
