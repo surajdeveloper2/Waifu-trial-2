@@ -50,7 +50,8 @@ async def inlinequery(update: Update, context: CallbackContext) -> None:
         if query:
             regex = re.compile(query, re.IGNORECASE)
             all_characters = list(await collection.find({"$or": [{"name": regex}, {"anime": regex}]}).to_list(length=None))
-        else:
+
+else:
             if 'all_characters' in all_characters_cache:
                 all_characters = all_characters_cache['all_characters']
             else:
@@ -67,6 +68,7 @@ async def inlinequery(update: Update, context: CallbackContext) -> None:
     results = []
     for character in characters:
         global_count = await user_collection.count_documents({'characters.id': character['id']})
+        anime_characters = await user_collection.count_documents({'characters.id': character['id']})
         anime_characters = await collection.count_documents({'anime': character['anime']})
 
         if query.startswith('collection.'):
@@ -75,7 +77,7 @@ async def inlinequery(update: Update, context: CallbackContext) -> None:
             caption = f"<b> Look At <a href='tg://user?id={user['id']}'>{(escape(user.get('first_name', user['id'])))}</a>'s Character</b>\n\n🌸: <b>{character['name']} (x{user_character_count})</b>\n🏖️: <b>{character['anime']} ({user_anime_characters}/{anime_characters})</b>\n<b>{character['rarity']}</b>\n\n<b>🆔️:</b> {character['id']}"
         else:
             caption = f"<b>Look At This Character !!</b>\n\n🌸:<b> {character['name']}</b>\n🏖️: <b>{character['anime']}</b>\n<b>{character['rarity']}</b>\n🆔️: <b>{character['id']}</b>\n\n<b>Globally Guessed {global_count} Times...</b>"
-        results.append(
+            results.append(
             InlineQueryResultPhoto(
                 thumbnail_url=character['img_url'],
                 id=f"{character['id']}_{time.time()}",
@@ -85,6 +87,8 @@ async def inlinequery(update: Update, context: CallbackContext) -> None:
             )
         )
 
+    # Answer the inline query asynchronously
     await update.inline_query.answer(results, next_offset=next_offset, cache_time=5)
 
-application.add_handler(InlineQueryHandler(inlinequery, block=False))
+# Add the InlineQueryHandler with the correct async flag
+application.add_handler(InlineQueryHandler(inlinequery, run_async=True))
