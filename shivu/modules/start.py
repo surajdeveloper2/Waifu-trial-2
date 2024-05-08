@@ -34,18 +34,24 @@ async def start(update: Update, context: CallbackContext) -> None:
         
         
         caption = f"""
-        ***Heyyyy...***
+        ***Hᴇʏ ᴛʜᴇʀᴇ, Gʀᴀʙʙᴇʀ! 🥀...***
 
-***I am An Open Source Character Catcher Bot...​Add Me in Your group.. And I will send Random Characters After.. every 100 messages in Group... Use /guess to.. Collect that Characters in Your Collection.. and see Collection by using /Harem... So add in Your groups and Collect Your harem***
+***I ᴀᴍ ᴀɴ ᴀɴɪᴍᴇ-ᴛʜᴇᴍᴇᴅ Wᴀɪғᴜ ʙᴏᴛ, ʜᴇʀᴇ ᴛᴏ ᴀᴅᴅ ᴀ ᴛᴏᴜᴄʜ ᴏғ ᴍᴀɢɪᴄ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ. Aᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ, ᴀɴᴅ I'ʟʟ ᴡᴏʀᴋ ᴍʏ ᴄʜᴀʀᴍ ʙʏ sᴘᴀᴡɴɪɴɢ ᴡᴀɪғᴜs ᴀғᴛᴇʀ ᴇᴠᴇʀʏ 𝟷𝟶𝟶 ᴍᴇssᴀɢᴇs! 💫***
+
+***Tᴏ ɢʀᴀʙ ᴛʜᴇsᴇ ᴇɴᴄʜᴀɴᴛɪɴɢ ᴡᴀɪғᴜs, sɪᴍᴘʟʏ ᴜsᴇ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ /grab <ᴡᴀɪғᴜ ɴᴀᴍᴇ>. Aɴᴅ ᴛʜᴀᴛ's ɴᴏᴛ ᴀʟʟ! Yᴏᴜ ᴄᴀɴ ᴋᴇᴇᴘ ᴛʀᴀᴄᴋ ᴏғ ʏᴏᴜʀ ʜᴀʀᴇᴍ ʙʏ ᴜsɪɴɢ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅs /harem ᴏʀ /mywaifus. 🌸***
+
+***Gᴇᴛ ʀᴇᴀᴅʏ ғᴏʀ ᴀ ᴛʜʀɪʟʟɪɴɢ ᴇxᴘᴇʀɪᴇɴᴄᴇ ᴏғ ᴡᴀɪғᴜ ɢʀᴀʙʙɪɴɢ, ғɪʟʟᴇᴅ ᴡɪᴛʜ Jᴏʏ ᴀɴᴅ ᴇxᴄɪᴛᴇᴍᴇɴᴛ! 💐***
+
+***Tʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴄʜᴏᴏsɪɴɢ ᴍᴇ ᴀs ʏᴏᴜʀ ᴄᴏᴍᴘᴀɴɪᴏɴ ᴏɴ ᴛʜɪs ғᴀɴᴛᴀsᴛɪᴄ Jᴏᴜʀɴᴇʏ! 🌸***
         """
         
         keyboard = [
             [InlineKeyboardButton("ADD ME", url=f'http://t.me/{BOT_USERNAME}?startgroup=new')],
             [InlineKeyboardButton("SUPPORT", url=f'https://t.me/{SUPPORT_CHAT}'),
             InlineKeyboardButton("UPDATES", url=f'https://t.me/{UPDATE_CHAT}')],
-            [InlineKeyboardButton("HELP", callback_data='help')],
-            [InlineKeyboardButton("SOURCE", url=f'https://github.com/MyNameIsShekhar/WAIFU-HUSBANDO-CATCHER')]
+            [InlineKeyboardButton("HELP", callback_data='help')]
         ]
+    
         reply_markup = InlineKeyboardMarkup(keyboard)
         photo_url = random.choice(PHOTO_URL)
 
@@ -58,11 +64,10 @@ async def start(update: Update, context: CallbackContext) -> None:
             [InlineKeyboardButton("SUPPORT", url=f'https://t.me/{SUPPORT_CHAT}'),
             InlineKeyboardButton("UPDATES", url=f'https://t.me/{UPDATE_CHAT}')],
             [InlineKeyboardButton("HELP", callback_data='help')],
-            [InlineKeyboardButton("SOURCE", url=f'https://github.com/MyNameIsShekhar/WAIFU-HUSBANDO-CATCHER')]
-        ]
+         ]
         
         reply_markup = InlineKeyboardMarkup(keyboard)
-        await context.bot.send_photo(chat_id=update.effective_chat.id, photo=photo_url, caption="🎴Alive!?... \n connect to me in PM For more information ",reply_markup=reply_markup )
+        await context.bot.send_photo(chat_id=update.effective_chat.id, photo=photo_url, caption="🎴Aʟɪᴠᴇ!?... \ɴ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ ᴍᴇ ɪɴ PM Fᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ",reply_markup=reply_markup )
 
 async def button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
@@ -72,15 +77,15 @@ async def button(update: Update, context: CallbackContext) -> None:
         help_text = """
     ***Help Section:***
     
-***/guess: To Guess character (only works in group)***
-***/fav: Add Your fav***
-***/trade : To trade Characters***
-***/gift: Give any Character from Your Collection to another user.. (only works in groups)***
-***/collection: To see Your Collection***
-***/topgroups : See Top Groups.. Ppl Guesses Most in that Groups***
-***/top: Too See Top Users***
-***/ctop : Your ChatTop***
-***/changetime: Change Character appear time (only works in Groups)***
+***/guess: Tᴏ ɢʀᴀʙ Wᴀɪғᴜ (ᴏɴʟʏ ᴡᴏʀᴋs ɪɴ ɢʀᴏᴜᴘs)***
+***/fav: Aᴅᴅ ʏᴏᴜʀ ᴡᴀɪғᴜ ғᴀᴠ***
+***/trade : Tᴏ ᴛʀᴀᴅᴇ Wᴀɪғᴜs***
+***/gift: Gɪᴠᴇ ᴀɴʏ Wᴀɪғᴜ ғʀᴏᴍ Yᴏᴜʀ Hᴀʀᴇᴍ/Cᴏʟʟᴇᴄᴛɪᴏɴ ᴛᴏ ᴀɴᴏᴛʜᴇʀ ᴜsᴇʀ.. (ᴏɴʟʏ ᴡᴏʀᴋs ɪɴ ɢʀᴏᴜᴘs)***
+***/collection: Tᴏ sᴇᴇ Yᴏᴜʀ Hᴀʀᴇᴍ/Cᴏʟʟᴇᴄᴛɪᴏɴ***
+***/topgroups : Sᴇᴇ Tᴏᴘ Gʀᴏᴜᴘs.. Pᴇᴏᴘʟᴇ Gᴜᴇssᴇs Mᴏsᴛ ɪɴ ᴛʜᴀᴛ Gʀᴏᴜᴘs***
+***/top: Tᴏ Sᴇᴇ Tᴏᴘ Usᴇʀs***
+***/ctop : Yᴏᴜʀ CʜᴀᴛTᴏᴘ***
+***/changetime: Cʜᴀɴɢᴇ Cʜᴀʀᴀᴄᴛᴇʀ ᴀᴘᴘᴇᴀʀ ᴛɪᴍᴇ (ᴏɴʟʏ ᴡᴏʀᴋs ɪɴ Gʀᴏᴜᴘs)***
    """
         help_keyboard = [[InlineKeyboardButton("⤾ Bᴀᴄᴋ", callback_data='back')]]
         reply_markup = InlineKeyboardMarkup(help_keyboard)
@@ -90,9 +95,15 @@ async def button(update: Update, context: CallbackContext) -> None:
     elif query.data == 'back':
 
         caption = f"""
-        ***Hoyyyy...*** ✨
+        ***Hᴇʏ ᴛʜᴇʀᴇ, Gʀᴀʙʙᴇʀ! 🥀...***
 
-***I am An Open Source Character Catcher Bot..​Add Me in Your group.. And I will send Random Characters After.. every 100 messages in Group... Use /guess to.. Collect that Characters in Your Collection.. and see Collection by using /Harem... So add in Your groups and Collect Your harem***
+***I ᴀᴍ ᴀɴ ᴀɴɪᴍᴇ-ᴛʜᴇᴍᴇᴅ Wᴀɪғᴜ ʙᴏᴛ, ʜᴇʀᴇ ᴛᴏ ᴀᴅᴅ ᴀ ᴛᴏᴜᴄʜ ᴏғ ᴍᴀɢɪᴄ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ. Aᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ, ᴀɴᴅ I'ʟʟ ᴡᴏʀᴋ ᴍʏ ᴄʜᴀʀᴍ ʙʏ sᴘᴀᴡɴɪɴɢ ᴡᴀɪғᴜs ᴀғᴛᴇʀ ᴇᴠᴇʀʏ 𝟷𝟶𝟶 ᴍᴇssᴀɢᴇs! 💫***
+
+***Tᴏ ɢʀᴀʙ ᴛʜᴇsᴇ ᴇɴᴄʜᴀɴᴛɪɴɢ ᴡᴀɪғᴜs, sɪᴍᴘʟʏ ᴜsᴇ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ /grab <ᴡᴀɪғᴜ ɴᴀᴍᴇ>. Aɴᴅ ᴛʜᴀᴛ's ɴᴏᴛ ᴀʟʟ! Yᴏᴜ ᴄᴀɴ ᴋᴇᴇᴘ ᴛʀᴀᴄᴋ ᴏғ ʏᴏᴜʀ ʜᴀʀᴇᴍ ʙʏ ᴜsɪɴɢ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅs /harem ᴏʀ /mywaifus. 🌸***
+
+***Gᴇᴛ ʀᴇᴀᴅʏ ғᴏʀ ᴀ ᴛʜʀɪʟʟɪɴɢ ᴇxᴘᴇʀɪᴇɴᴄᴇ ᴏғ ᴡᴀɪғᴜ ɢʀᴀʙʙɪɴɢ, ғɪʟʟᴇᴅ ᴡɪᴛʜ Jᴏʏ ᴀɴᴅ ᴇxᴄɪᴛᴇᴍᴇɴᴛ! 💐***
+
+***Tʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴄʜᴏᴏsɪɴɢ ᴍᴇ ᴀs ʏᴏᴜʀ ᴄᴏᴍᴘᴀɴɪᴏɴ ᴏɴ ᴛʜɪs ғᴀɴᴛᴀsᴛɪᴄ Jᴏᴜʀɴᴇʏ! 🌸***
         """
 
         
@@ -101,7 +112,6 @@ async def button(update: Update, context: CallbackContext) -> None:
             [InlineKeyboardButton("SUPPORT", url=f'https://t.me/{SUPPORT_CHAT}'),
             InlineKeyboardButton("UPDATES", url=f'https://t.me/{UPDATE_CHAT}')],
             [InlineKeyboardButton("HELP", callback_data='help')],
-            [InlineKeyboardButton("SOURCE", url=f'https://github.com/MyNameIsShekhar/WAIFU-HUSBANDO-CATCHER')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 

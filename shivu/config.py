@@ -2,18 +2,18 @@ class Config(object):
     LOGGER = True
 
     # Get this value from my.telegram.org/apps
-    OWNER_ID = "6765826972"
-    sudo_users = "6845325416", "6765826972"
-    GROUP_ID = -1002133191051
-    TOKEN = "6707490163:AAHZzqjm3rbEZsObRiNaT7DMtw_i5WPo_0o"
-    mongo_url = "mongodb+srv://HaremDBBot:ThisIsPasswordForHaremDB@haremdb.swzjngj.mongodb.net/?retryWrites=true&w=majority"
-    PHOTO_URL = ["https://telegra.ph/file/b925c3985f0f325e62e17.jpg", "https://telegra.ph/file/4211fb191383d895dab9d.jpg"]
-    SUPPORT_CHAT = "Collect_em_support"
-    UPDATE_CHAT = "Collect_em_support"
-    BOT_USERNAME = "Collect_Em_AllBot"
-    CHARA_CHANNEL_ID = "-1002133191051"
-    api_id = 26626068
-    api_hash = "bf423698bcbe33cfd58b11c78c42caa2"
+    OWNER_ID = "5743248220"
+    sudo_users = "1993048420", "1214348787", "5743248220", "1878911444"
+    GROUP_ID = -1002001602255
+    TOKEN = "7165106534:AAGrNNJMhqMlnt2z1uGOlwDD8yBMyqgaVOw"
+    mongo_url = "mongodb+srv://nksharmas9835:waifu@cluster0.ouufhhw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    PHOTO_URL = ["https://telegra.ph/file/44b149b62ce6d35237244.jpg", "https://telegra.ph/file/46dae6c6173cf538b2cdf.jpg"]
+    SUPPORT_CHAT = "waifu_support_group"
+    UPDATE_CHAT = "waifu_support_group"
+    BOT_USERNAME = "Waifu_Station_Bot"
+    CHARA_CHANNEL_ID = "-1002003134505"
+    api_id = 22867431
+    api_hash = "24ef0e76ceb137563dc33722e4cd79bd"
 
     
 class Production(Config):
