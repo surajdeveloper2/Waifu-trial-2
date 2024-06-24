@@ -5,7 +5,7 @@ class Config(object):
     OWNER_ID = "7147738922"
     sudo_users = "7147738922", "6574393060"
     GROUP_ID = -1002029788751
-    TOKEN = "7197840791:AAHR-OqWB2L3cuhPxClWCHOFKi1ndaigTjg"
+    TOKEN = "7197840791:AAHEtuE6F8mDqd3MqHjHpkrXhVP7OBd4mJc"
     mongo_url = "mongodb+srv://DaxxMusic6:TeamDaxx1@cluster0.ln5y16q.mongodb.net/?retryWrites=true&w=majority"
     PHOTO_URL = ["https://telegra.ph/file/b925c3985f0f325e62e17.jpg", "https://telegra.ph/file/4211fb191383d895dab9d.jpg"]
     SUPPORT_CHAT = "-1002192923367"
