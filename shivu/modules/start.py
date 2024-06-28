@@ -72,11 +72,11 @@ async def button(update: Update, context: CallbackContext) -> None:
         help_text = """
     ***Help Section:***
     
-***/guess: To Guess character (only works in group)***
+***/seize: To Guess character (only works in group)***
 ***/fav: Add Your fav***
 ***/trade : To trade Characters***
 ***/gift: Give any Character from Your Collection to another user.. (only works in groups)***
-***/collection: To see Your Collection***
+***/seizes: To see Your Collection***
 ***/topgroups : See Top Groups.. Ppl Guesses Most in that Groups***
 ***/top: Too See Top Users***
 ***/ctop : Your ChatTop***
