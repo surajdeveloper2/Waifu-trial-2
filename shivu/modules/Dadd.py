@@ -13,6 +13,7 @@ use rarity number accordingly rarity Map
 rarity_map = {1: "🍀 𝙍𝙖𝙧𝙚", 2: "✨ 𝙇𝙚𝙜𝙚𝙣𝙙𝙖𝙧𝙮", 3: "🪽 𝘾𝙚𝙡𝙚𝙨𝙩𝙞𝙖𝙡", 4: "🥵 𝙀𝙧𝙤𝙩𝙞𝙘", 5: "🐉 𝙈𝙮𝙩𝙝𝙞𝙘𝙖𝙡", 6: "🎴 𝘾𝙤𝙨𝙥𝙡𝙖𝙮", 7: "🔮 𝙇𝙞𝙢𝙞𝙩𝙚𝙙"}
 """
 
+
 # Channel ID for posting character information (replace with your actual channel ID)
 CHARA_CHANNEL_ID = -1002168367599
 
