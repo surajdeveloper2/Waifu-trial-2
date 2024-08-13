@@ -9,13 +9,15 @@ from gridfs import GridFS
 from shivu import collection, user_collection, db
 from io import BytesIO
 
-WRONG_FORMAT_TEXT = """Wrong ❌ format...  eg. /yadd Img_url muzan-kibutsuji Demon-slayer 3
+WRONG_FORMAT_TEXT = """Wrong ❌ format...  eg. /yadd Img_url muzan-kibutsuji Demon-slayer 3
 
 img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = {1: "🍀 𝙍𝙖𝙧𝙚", 2: "✨ 𝙇𝙚𝙜𝙚𝙣𝙙𝙖𝙧𝙮", 3: "🪽 𝘾𝙚𝙡𝙚𝙨𝙩𝙞𝙖𝙡", 4: "🥵 𝙀𝙧𝙤𝙩𝙞𝙘", 5: "🐉 𝙈𝙮𝙩𝙝𝙞𝙘𝙖𝙡", 6: "🎴 𝘾𝙤𝙨𝙥𝙡𝙖𝙮", 7: "🔮 𝙇𝙞𝙢𝙞𝙩𝙚𝙙"}"""
+rarity_map = {1: "🍀 𝙍𝙖𝙧𝙚", 2: "✨ 𝙇𝙚𝙜𝙚𝙣𝙙𝙖𝙧𝙮", 3: "🪽 𝘾𝙚𝙡𝙚𝙨𝙩𝙞𝙖𝙡", 4: "🥵 𝙀𝙧𝙤𝙩𝙞𝙘", 5: "🐉 𝙈𝙮𝙩𝙝𝙞𝙘𝙖𝙡", 6: "🎴 𝘾𝙤𝙨𝙥𝙡𝙖𝙮", 7: "🔮 𝙇𝙞𝙢𝙞𝙩𝙚𝙙"} """
+
+
 
 async def get_next_sequence_number(sequence_name):
     sequence_collection = db.sequences
@@ -29,7 +31,9 @@ async def get_next_sequence_number(sequence_name):
         return 0
     return sequence_document['sequence_value']
 
-if str(update.effective_user.id) not in sudo_users:
+
+async def upload(update: Update, context: CallbackContext) -> None:
+    if str(update.effective_user.id) not in sudo_users:
         await update.message.reply_text('Ask My Owner...')
         return
 
@@ -105,6 +109,7 @@ if str(update.effective_user.id) not in sudo_users:
     except Exception as e:
         await update.message.reply_text(f'Character Upload Unsuccessful. Error: {str(e)}\nIf you think this is a source error, forward to: {SUPPORT_CHAT}')
 
+
 async def check(update: Update, context: CallbackContext) -> None:    
     try:
         args = context.args
@@ -159,6 +164,7 @@ async def delete(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Deleted Successfully from db, but character not found In Channel')
     except Exception as e:
         await update.message.reply_text(f'{str(e)}')
+
 
 async def update(update: Update, context: CallbackContext) -> None:
     if str(update.effective_user.id) not in sudo_users:
@@ -222,6 +228,8 @@ async def update(update: Update, context: CallbackContext) -> None:
     except Exception as e:
         await update.message.reply_text(f'I guess did not added bot in channel.. or character uploaded Long time ago.. Or character not exits.. orr Wrong id')
 
+        
+
 async def check_total_characters(update: Update, context: CallbackContext) -> None:
     try:
         total_characters = await collection.count_documents({})
@@ -231,6 +239,29 @@ async def check_total_characters(update: Update, context: CallbackContext) -> No
         await update.message.reply_text(f"Error occurred: {e}")
 
 
+async def add_sudo_user(update: Update, context: CallbackContext) -> None:
+    if int(update.effective_user.id) == 6257270528:  # Replace OWNER_ID with the ID of the bot owner
+        if update.message.reply_to_message and update.message.reply_to_message.from_user:
+            new_sudo_user_id = str(update.message.reply_to_message.from_user.id)
+            if new_sudo_user_id not in sudo_users:
+                sudo_users.append(new_sudo_user_id)
+                await update.message.reply_text("User added to sudo users.")
+            else:
+                await update.message.reply_text("User is already in sudo users.")
+        else:
+            await update.message.reply_text("Please reply to a message from the user you want to add to sudo users.")
+    else:
+        await update.message.reply_text("You are not authorized to use this command.")
+
+ADD_SUDO_USER_HANDLER = CommandHandler('add_sudo_user', add_sudo_user, block=False)
+application.add_handler(ADD_SUDO_USER_HANDLER)
+       
+        
+
+ADD_SUDO_USER_HANDLER = CommandHandler('addsudo', add_sudo_user, block=False)
+application.add_handler(ADD_SUDO_USER_HANDLER)
+
+        
 application.add_handler(CommandHandler("total", check_total_characters))
 
 
