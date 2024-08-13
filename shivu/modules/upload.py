@@ -32,84 +32,6 @@ async def get_next_sequence_number(sequence_name):
     return sequence_document['sequence_value']
 
 
-async def upload(update: Update, context: CallbackContext) -> None:
-    if str(update.effective_user.id) not in sudo_users:
-        await update.message.reply_text('Ask My Owner...')
-        return
-
-    try:
-        args = context.args
-        if len(args) != 4:
-            await update.message.reply_text(WRONG_FORMAT_TEXT)
-            return
-
-        character_name = args[1].replace('-', ' ').title()
-        anime = args[2].replace('-', ' ').title()
-
-        media_url = args[0]
-        media_type = None
-
-        try:
-            urllib.request.urlopen(media_url)
-        except:
-            await update.message.reply_text('Invalid URL.')
-            return
-
-        if media_url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')):
-            media_type = 'photo'
-        elif media_url.endswith(('.mp4', '.webm', '.ogg')):
-            media_type = 'video'
-        else:
-            await update.message.reply_text('Invalid media type. Only photos and videos are supported.')
-            return
-
-        rarity_map = {1: "🍀 𝙍𝙖𝙧𝙚", 2: "✨ 𝙇𝙚𝙜𝙚𝙣𝙙𝙖𝙧𝙮", 3: "🪽 𝘾𝙚𝙡𝙚𝙨𝙩𝙞𝙖𝙡", 4: "🥵 𝙀𝙧𝙤𝙩𝙞𝙘", 5: "🐉 𝙈𝙮𝙩𝙝𝙞𝙘𝙖𝙡", 6: "🎴 𝘾𝙤𝙨𝙥𝙡𝙖𝙮", 7: "🔮 𝙇𝙞𝙢𝙞𝙩𝙚𝙙"}
-        try:
-            rarity = rarity_map[int(args[3])]
-        except KeyError:
-            await update.message.reply_text('Invalid rarity. Please use 1, 2, 3, 4, or 5')
-            return
-
-        id = str(await get_next_sequence_number('character_id')).zfill(2)
-
-        character = {
-            'name': character_name,
-            'anime': anime,
-            'rarity': rarity,
-            'id': id
-        }
-
-        if media_type == 'photo':
-            character['img_url'] = media_url
-        elif media_type == 'video':
-            character['vid_url'] = media_url
-
-        try:
-            if media_type == 'photo':
-                message = await context.bot.send_photo(
-                    chat_id=CHARA_CHANNEL_ID,
-                    photo=media_url,
-                    caption=f'<b>Character Name:</b> {character_name}\n<b>Anime Name:</b> {anime}\n<b>Rarity:</b> {rarity}\n<b>ID:</b> {id}\nAdded by <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
-                    parse_mode='HTML'
-                )
-            elif media_type == 'video':
-                message = await context.bot.send_video(
-                    chat_id=CHARA_CHANNEL_ID,
-                    video=media_url,
-                    caption=f'<b>Character Name:</b> {character_name}\n<b>Anime Name:</b> {anime}\n<b>Rarity:</b> {rarity}\n<b>ID:</b> {id}\nAdded by <a href="tg://user?id={update.effective_user.id}">{update.effective_user.first_name}</a>',
-                    parse_mode='HTML'
-                )
-            character['message_id'] = message.message_id
-            await collection.insert_one(character)
-            await update.message.reply_text('CHARACTER ADDED....')
-        except:
-            await collection.insert_one(character)
-            update.effective_message.reply_text("Character Added but no Database Channel Found, Consider adding one.")
-        
-    except Exception as e:
-        await update.message.reply_text(f'Character Upload Unsuccessful. Error: {str(e)}\nIf you think this is a source error, forward to: {SUPPORT_CHAT}')
-
-
 async def check(update: Update, context: CallbackContext) -> None:    
     try:
         args = context.args
@@ -158,7 +80,7 @@ async def delete(update: Update, context: CallbackContext) -> None:
         character = await collection.find_one_and_delete({'id': args[0]})
         if character:
             
-            await context.bot.delete_message(chat_id=CHARA_CHANNEL_ID, message_id=character['message_id'])
+            
             await update.message.reply_text('DONE')
         else:
             await update.message.reply_text('Deleted Successfully from db, but character not found In Channel')
@@ -206,7 +128,7 @@ async def update(update: Update, context: CallbackContext) -> None:
 
         
         if args[1] == 'img_url':
-            await context.bot.delete_message(chat_id=CHARA_CHANNEL_ID, message_id=character['message_id'])
+            
             message = await context.bot.send_photo(
                 chat_id=CHARA_CHANNEL_ID,
                 photo=new_value,
@@ -265,8 +187,7 @@ application.add_handler(ADD_SUDO_USER_HANDLER)
 application.add_handler(CommandHandler("total", check_total_characters))
 
 
-UPLOAD_HANDLER = CommandHandler('dadd', upload, block=False)
-application.add_handler(UPLOAD_HANDLER)
+
 DELETE_HANDLER = CommandHandler('ddel', delete, block=False)
 application.add_handler(DELETE_HANDLER)
 UPDATE_HANDLER = CommandHandler('dupt', update, block=False)
