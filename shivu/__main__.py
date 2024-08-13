@@ -247,4 +247,3 @@ if __name__ == "__main__":
     shivuu.start()
     LOGGER.info("Bot started")
     main()
-
