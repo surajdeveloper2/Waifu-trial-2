@@ -2,6 +2,31 @@ import logging
 from telegram import Update
 from telegram.ext import CallbackContext
 from shivu import collection, application
+import logging
+from telegram import Update
+from telegram.ext import CallbackContext
+
+import urllib.request
+import uuid
+import requests
+import random
+import html
+import logging
+from pymongo import ReturnDocument
+from typing import List
+from bson import ObjectId
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
+from telegram.ext import CommandHandler, CallbackContext, CallbackQueryHandler
+from datetime import datetime, timedelta
+
+# Assuming these are defined elsewhere in your code
+from shivu import db, UPDATE_CHAT, SUPPORT_CHAT, CHARA_CHANNEL_ID, collection, user_collection
+from shivu import (application, PHOTO_URL, OWNER_ID,
+                    user_collection, top_global_groups_collection, top_global_groups_collection, 
+                    group_user_totals_collection)
+
+from shivu import PARTNER
+from collections import defaultdict
 
 async def check_and_fix_duplicate_ids(update: Update, context: CallbackContext) -> None:
     if str(update.effective_user.id) not in PARTNER:
