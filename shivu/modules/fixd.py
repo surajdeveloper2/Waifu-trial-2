@@ -25,7 +25,7 @@ from shivu import (application, PHOTO_URL, OWNER_ID,
                     user_collection, top_global_groups_collection, top_global_groups_collection, 
                     group_user_totals_collection)
 
-from shivu import PARTNER
+
 from collections import defaultdict
 
 async def check_and_fix_duplicate_ids(update: Update, context: CallbackContext) -> None:
