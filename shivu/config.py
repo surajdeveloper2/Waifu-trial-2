@@ -2,16 +2,16 @@ class Config(object):
     LOGGER = True
 
     # Get this value from my.telegram.org/apps
-    OWNER_ID = "6765826972"
-    sudo_users = "6845325416", "6765826972"
-    GROUP_ID = -1002133191051
-    TOKEN = "6707490163:AAHZzqjm3rbEZsObRiNaT7DMtw_i5WPo_0o"
-    mongo_url = "mongodb+srv://HaremDBBot:ThisIsPasswordForHaremDB@haremdb.swzjngj.mongodb.net/?retryWrites=true&w=majority"
-    PHOTO_URL = ["https://telegra.ph/file/b925c3985f0f325e62e17.jpg", "https://telegra.ph/file/4211fb191383d895dab9d.jpg"]
-    SUPPORT_CHAT = "Collect_em_support"
-    UPDATE_CHAT = "Collect_em_support"
-    BOT_USERNAME = "Collect_Em_AllBot"
-    CHARA_CHANNEL_ID = "-1002133191051"
+    OWNER_ID = "1962399469"
+    sudo_users = "1962399469", "7378476666"
+    GROUP_ID = -1002168488906
+    TOKEN = "7466616506:AAGriSb83_Rn384dZoqYWCPOtG0lLeGhS_Q"
+    mongo_url = "mongodb+srv://Narutoo:hinatahyuga@hater.0luw79s.mongodb.net/"
+    PHOTO_URL = ["https://telegra.ph/file/3081e30be69daa65e0f61.jpg", "https://telegra.ph/file/79da4fefc64364f8301c5.jpg"]
+    SUPPORT_CHAT = "blade_x_support"
+    UPDATE_CHAT = "blade_x_community"
+    BOT_USERNAME = "Devine_wifu_bot"
+    CHARA_CHANNEL_ID = "-1002168367599"
     api_id = 26626068
     api_hash = "bf423698bcbe33cfd58b11c78c42caa2"
 
