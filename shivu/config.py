@@ -6,7 +6,7 @@ class Config(object):
     sudo_users = "6845325416", "7667987606"
     GROUP_ID = -1002133191051
     TOKEN = "7589023976:AAFerTqtgkPEhmNsAU_5XOFtBaTcd7g-3EE"
-    mongo_url = "mongodb+srv://surajmanikpuri601:surajgod112@cluster0.bmdh2.mongodb.net/
+    mongo_url = "mongodb+srv://surajgod112:surajgod113@cluster0.v52wo.mongodb.net/"
     PHOTO_URL = ["https://telegra.ph/file/b925c3985f0f325e62e17.jpg", "https://telegra.ph/file/4211fb191383d895dab9d.jpg"]
     SUPPORT_CHAT = "ntpcraj"
     UPDATE_CHAT = "ntpcdjk"
