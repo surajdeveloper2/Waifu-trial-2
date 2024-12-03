@@ -11,8 +11,8 @@ DEVS = (6087651372)  # Developer user IDs
 SUPPORT_CHAT_ID = -1002380442930  # Change this to your group's chat ID
 
 keyboard = InlineKeyboardMarkup([
-    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/Grabbing_Your_WH_Group")],
-    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/Flex_Bots_News")]
+    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcdjk")],
+    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcraj")]
 ])
 
 # Functions
