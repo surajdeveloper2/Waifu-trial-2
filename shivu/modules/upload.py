@@ -12,7 +12,7 @@ img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = 1 (⚪ Common), 2 (🟣 Normal) , 3 (🔵Medium), 4 (🎗 Legendary), 5 (💮 Special Edition), 6 (🔮Limited Edition), 7 (🫧Premium), 8 (🎃Halloween), 9(💞Valentine), 10(🌲Christmas), 11(🐰Bunny), 12(🫦Sexy), 13(🍑Cake), 14(🥵Heaven)"""
+rarity_map = 1 (⚪ 𝐂𝐨𝐦𝐦𝐨𝐧), 2 (🟣 𝐍𝐨𝐫𝐦𝐚𝐥) , 3 (🔵𝐌𝐞𝐝𝐢𝐮𝐦), 4 (🎗 𝐋𝐞𝐠𝐞𝐧𝐝𝐚𝐫𝐲), 5 (💮 𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐄𝐝𝐢𝐭𝐢𝐨𝐧), 6 (🔮𝐋𝐢𝐦𝐢𝐭𝐞𝐝 𝐄𝐝𝐢𝐭𝐢𝐨𝐧), 7 (🫧𝐏𝐫𝐞𝐦𝐢𝐮𝐦), 8 (🎃𝐇𝐚𝐥𝐥𝐨𝐰𝐞𝐞𝐧), 9(💞𝐕𝐚𝐥𝐞𝐧𝐭𝐢𝐧𝐞), 10(🌲𝐂𝐡𝐫𝐢𝐬𝐭𝐦𝐚𝐬), 11(🐰𝐁𝐮𝐧𝐧𝐲), 12(🫦𝐒𝐞𝐱𝐲), 13(🍑𝐒𝐮𝐥𝐭𝐫𝐲), 14(🥵𝐇𝐞𝐚𝐯𝐞𝐧)"""
 
 
 
@@ -49,7 +49,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Invalid URL.')
             return
 
-        rarity_map = {1: "⚪ Common", 2: "🟣 Normal", 3: "🔵 Medium", 4: "🎗 Legendary", 5: "💮 Special Edition", 6: "🔮Limited Edition", 7: "🫧Premium", 8: "🎃Halloween", 9: "💞Valentine", 10: "🌲Christmas", 11: "🐰Bunny", 12: "🫦Sexy", 13: "🍑Cake", 14: "🥵Heaven"}
+        rarity_map = {1: "⚪ 𝐂𝐨𝐦𝐦𝐨𝐧", 2: "🟣 𝐍𝐨𝐫𝐦𝐚𝐥", 3: "🔵 𝐌𝐞𝐝𝐢𝐮𝐦", 4: "🎗 𝐋𝐞𝐠𝐚𝐧𝐝𝐚𝐫𝐲", 5: "💮 𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐄𝐝𝐢𝐭𝐢𝐨𝐧", 6: "🔮𝐋𝐢𝐦𝐢𝐭𝐞𝐝 𝐄𝐝𝐢𝐭𝐢𝐨𝐧", 7: "🫧𝐏𝐫𝐞𝐦𝐢𝐮𝐦", 8: "🎃𝐇𝐚𝐥𝐥𝐨𝐰𝐞𝐞𝐧", 9: "💞𝐕𝐚𝐥𝐞𝐧𝐭𝐢𝐧𝐞", 10: "🌲𝐂𝐡𝐫𝐢𝐬𝐭𝐦𝐚𝐬", 11: "🐰𝐁𝐮𝐧𝐧𝐲", 12: "🫦𝐒𝐞𝐱𝐲", 13: "🍑𝐒𝐮𝐥𝐭𝐫𝐲", 14: "🥵𝐇𝐞𝐚𝐯𝐞𝐧"}
         try:
             rarity = rarity_map[int(args[3])]
         except KeyError:
@@ -133,11 +133,12 @@ async def update(update: Update, context: CallbackContext) -> None:
         if args[1] in ['name', 'anime']:
             new_value = args[2].replace('-', ' ').title()
         elif args[1] == 'rarity':
-            rarity_map = {1: "⚪ Common", 2: "🟣 Rare", 3: "🟡 Legendary", 4: "🟢 Medium", 5: "💮 Special edition"}
+            rarity_map = {1: "⚪ 𝐂𝐨𝐦𝐦𝐨𝐧", 2: "🟣 𝐍𝐨𝐫𝐦𝐚𝐥", 3: "🔵 𝐌𝐞𝐝𝐢𝐮𝐦", 4: "🎗 𝐋𝐞𝐠𝐚𝐧𝐝𝐚𝐫𝐲", 5: "💮 𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐄𝐝𝐢𝐭𝐢𝐨𝐧", 6: "🔮𝐋𝐢𝐦𝐢𝐭𝐞𝐝 𝐄𝐝𝐢𝐭𝐢𝐨𝐧", 7: "🫧𝐏𝐫𝐞𝐦𝐢𝐮𝐦", 8: "🎃𝐇𝐚𝐥𝐥𝐨𝐰𝐞𝐞𝐧", 9: "💞𝐕𝐚𝐥𝐞𝐧𝐭𝐢𝐧𝐞", 10: "🌲𝐂𝐡𝐫𝐢𝐬𝐭𝐦𝐚𝐬", 11: "🐰𝐁𝐮𝐧𝐧𝐲", 12: "🫦𝐒𝐞𝐱𝐲", 13: "🍑𝐒𝐮𝐥𝐭𝐫𝐲", 14: "🥵𝐇𝐞𝐚𝐯𝐞𝐧"}
+
             try:
                 new_value = rarity_map[int(args[2])]
             except KeyError:
-                await update.message.reply_text('Invalid rarity. Please use 1, 2, 3, 4, or 5.')
+                await update.message.reply_text('Invalid rarity. Please use 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14.')
                 return
         else:
             new_value = args[2]
