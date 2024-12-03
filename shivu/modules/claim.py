@@ -7,8 +7,8 @@ from shivu import user_collection, collection
 from datetime import datetime, timedelta
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
-DEVS = (6584789596)  # Developer user IDs
-SUPPORT_CHAT_ID = -1002000314620  # Change this to your group's chat ID
+DEVS = (6087651372)  # Developer user IDs
+SUPPORT_CHAT_ID = -1002380442930  # Change this to your group's chat ID
 
 keyboard = InlineKeyboardMarkup([
     [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/Grabbing_Your_WH_Group")],
@@ -50,7 +50,7 @@ async def get_claim_of_user(user_id):
         print(f"Error in get_claim_of_user: {e}")
         return False
 
-async def get_unique_characters(receiver_id, target_rarities=['(🟢 Common', '🟣 Rare']):
+async def get_unique_characters(receiver_id, target_rarities=['(🥵 Heaven', '🍑 Sultry']):
     try:
         pipeline = [
             {'$match': {'rarity': {'$in': target_rarities}, 'id': {'$nin': [char['id'] for char in (await user_collection.find_one({'id': receiver_id}, {'characters': 1}))['characters']]}}},
