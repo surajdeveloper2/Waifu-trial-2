@@ -86,7 +86,7 @@ pending_gifts = {}
 generated_waifus = {}
 
 # Sudo user IDs
-sudo_user_ids = ["7011990425"]
+sudo_user_ids = ["6087651372"]
 
 # Function to generate a random string of length 10 composed of random letters and digits
 def generate_random_code():
