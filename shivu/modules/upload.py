@@ -12,7 +12,7 @@ img_url character-name anime-name rarity-number
 
 use rarity number accordingly rarity Map
 
-rarity_map = 1 (⚪ Common), 2 (🟣 Normal) , 3 (🔵Medium), 4 (🟡 Legendary), 5 (💮 Mythical), 6 (🔮Limited Edition), 7 (🫧Premium), 8 (🎃Halloween), 9(💞Valentine), 10(🌲Christmas), 11(🐰Bunny), 13(🫦Sexy), 14(🍑Ultimate), 15(🥵Heaven)"""
+rarity_map = 1 (⚪ Common), 2 (🟣 Normal) , 3 (🔵Medium), 4 (🎗 Legendary), 5 (💮 Special Edition), 6 (🔮Limited Edition), 7 (🫧Premium), 8 (🎃Halloween), 9(💞Valentine), 10(🌲Christmas), 11(🐰Bunny), 13(🫦Sexy), 14(🍑Cake), 15(🥵Heaven)"""
 
 
 
@@ -49,7 +49,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             await update.message.reply_text('Invalid URL.')
             return
 
-        rarity_map = {1: "⚪ Common", 2: "🟣 Normal", 3: "🔵 Medium", 4: "🟡 Legendary", 5: "💮Mythical", 6: "🔮Limited Edition", 7: "🫧Premium", 8: "🎃Halloween", 9: "💞Valentine", 10: "🌲Christmas", 11: "🐰Bunny", 12: "🫦Sexy", 13: "🍑Ultimate", 14: "🥵Heaven"}
+        rarity_map = {1: "⚪ Common", 2: "🟣 Normal", 3: "🔵 Medium", 4: "🎗 Legendary", 5: "💮 Special Edition", 6: "🔮Limited Edition", 7: "🫧Premium", 8: "🎃Halloween", 9: "💞Valentine", 10: "🌲Christmas", 11: "🐰Bunny", 12: "🫦Sexy", 13: "🍑Cake", 14: "🥵Heaven"}
         try:
             rarity = rarity_map[int(args[3])]
         except KeyError:
@@ -75,7 +75,7 @@ async def upload(update: Update, context: CallbackContext) -> None:
             )
             character['message_id'] = message.message_id
             await collection.insert_one(character)
-            await update.message.reply_text('CHARACTER ADDED....')
+            await update.message.reply_text('CHARACTER ADDED....👍')
         except:
             await collection.insert_one(character)
             update.effective_message.reply_text("Character Added but no Database Channel Found, Consider adding one.")
