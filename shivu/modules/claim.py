@@ -81,8 +81,8 @@ async def claim(_, message: t.Message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     try:
-        member = await bot.get_chat_member(-1002363755558, user_id)
-        members = await bot.get_chat_member(-1002122812917, user_id)
+        member = await bot.get_chat_member(-1002380442930, user_id)
+        members = await bot.get_chat_member(-1002380442930, user_id)
         if not member or not members:
             await message.reply_text("You need to join the chat to use this feature.", reply_markup=keyboard)
             return 
