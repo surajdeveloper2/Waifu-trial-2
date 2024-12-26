@@ -121,4 +121,9 @@ async def claim(_, message: t.Message):
             ]
             for img_url, caption in zip(img_urls, captions):
                 await message.reply_photo(photo=img_url, caption=caption, parse_mode='HTML')
+                else:
+            await message.reply_text("No characters found for claiming 🤡.")
+    except Exception as e:
+        print(f"An error occurred in claim: {e}")
+
         
