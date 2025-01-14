@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
 DEVS = (6087651372)  # Developer user IDs
-SUPPORT_CHAT_ID = -1002000314620  # Change this to your group's chat ID
+SUPPORT_CHAT_ID = -1002380442930  # Change this to your group's chat ID
 
 keyboard = InlineKeyboardMarkup([
     [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcraj")],
@@ -54,7 +54,7 @@ async def get_unique_characters(receiver_id, target_rarities=['(ðŸŸ¢ Common', 'ð
     try:
         pipeline = [
             {'$match': {'rarity': {'$in': target_rarities}, 'id': {'$nin': [char['id'] for char in (await user_collection.find_one({'id': receiver_id}, {'characters': 1}))['characters']]}}},
-            {'$sample': {'size': 1}}  # Adjust Num
+            {'$sample': {'size': 2}}  # Adjust Num
         ]
         cursor = collection.aggregate(pipeline)
         characters = await cursor.to_list(length=None)
@@ -81,8 +81,8 @@ async def claim(_, message: t.Message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     try:
-        member = await bot.get_chat_member(-1002000314620, user_id)
-        members = await bot.get_chat_member(-1002050050431, user_id)
+        member = await bot.get_chat_member(-1002380442930, user_id)
+        members = await bot.get_chat_member(-1002380442930, user_id)
         if not member or not members:
             await message.reply_text("You need to join the chat to use this feature.", reply_markup=keyboard)
             return 
