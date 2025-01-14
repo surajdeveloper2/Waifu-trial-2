@@ -7,7 +7,7 @@ from shivu import user_collection, collection
 from datetime import datetime, timedelta
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
-DEVS = (6584789596)  # Developer user IDs
+DEVS = (6087651372)  # Developer user IDs
 SUPPORT_CHAT_ID = -1002000314620  # Change this to your group's chat ID
 
 keyboard = InlineKeyboardMarkup([
