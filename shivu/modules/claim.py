@@ -7,12 +7,12 @@ from shivu import user_collection, collection
 from datetime import datetime, timedelta
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 
-DEVS = (6087651372)  # Developer user IDs
-SUPPORT_CHAT_ID = -1002380442930  # Change this to your group's chat ID
+DEVS = (6584789596)  # Developer user IDs
+SUPPORT_CHAT_ID = -1002000314620  # Change this to your group's chat ID
 
 keyboard = InlineKeyboardMarkup([
-    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcdjk")],
-    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcraj")]
+    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/ntpcraj")],
+    [InlineKeyboardButton("Join Chat To Use Me", url="https://t.me/HardDubber")]
 ])
 
 # Functions
@@ -50,7 +50,7 @@ async def get_claim_of_user(user_id):
         print(f"Error in get_claim_of_user: {e}")
         return False
 
-async def get_unique_characters(receiver_id, target_rarities=['(🥵 𝐇𝐞𝐚𝐯𝐞𝐧', '🍑 𝐒𝐮𝐥𝐭𝐫𝐲']):
+async def get_unique_characters(receiver_id, target_rarities=['(🟢 Common', '🟣 Rare']):
     try:
         pipeline = [
             {'$match': {'rarity': {'$in': target_rarities}, 'id': {'$nin': [char['id'] for char in (await user_collection.find_one({'id': receiver_id}, {'characters': 1}))['characters']]}}},
@@ -81,13 +81,13 @@ async def claim(_, message: t.Message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     try:
-        member = await bot.get_chat_member(-1002380442930, user_id)
-        members = await bot.get_chat_member(-1002380442930, user_id)
+        member = await bot.get_chat_member(-1002000314620, user_id)
+        members = await bot.get_chat_member(-1002050050431, user_id)
         if not member or not members:
             await message.reply_text("You need to join the chat to use this feature.", reply_markup=keyboard)
             return 
         if chat_id != SUPPORT_CHAT_ID:
-            return await message.reply_text("Command can only be used here: @ntpcraj")
+            return await message.reply_text("Command can only be used here: @Grabbing_Your_WH_Group")
 
         mention = message.from_user.mention
 
@@ -121,9 +121,7 @@ async def claim(_, message: t.Message):
             ]
             for img_url, caption in zip(img_urls, captions):
                 await message.reply_photo(photo=img_url, caption=caption, parse_mode='HTML')
-                else:
-            await message.reply_text("No characters found for claiming 🤡.")
+        else:
+            await message.reply_text("No characters found for claiming.")
     except Exception as e:
         print(f"An error occurred in claim: {e}")
-
-        
