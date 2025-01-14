@@ -11,9 +11,9 @@ from shivu import (application, PHOTO_URL, OWNER_ID,
 
 from shivu import sudo_users as SUDO_USERS 
 
-    
+
 async def global_leaderboard(update: Update, context: CallbackContext) -> None:
-    
+
     cursor = top_global_groups_collection.aggregate([
         {"$project": {"group_name": 1, "count": 1}},
         {"$sort": {"count": -1}},
@@ -21,7 +21,7 @@ async def global_leaderboard(update: Update, context: CallbackContext) -> None:
     ])
     leaderboard_data = await cursor.to_list(length=10)
 
-    leaderboard_message = "<b>TOP 10 GROUPS WHO GUESSED MOST CHARACTERS</b>\n\n"
+    leaderboard_message = "<b>ᴛᴏᴘ 𝟷𝟶 ɢʀᴏᴜᴘs ᴡʜᴏ ɢʀᴀʙʙᴇᴅ ᴍᴏsᴛ ᴄʜᴀʀᴀᴄᴛᴇʀs</b>\n\n"
 
     for i, group in enumerate(leaderboard_data, start=1):
         group_name = html.escape(group.get('group_name', 'Unknown'))
@@ -30,8 +30,8 @@ async def global_leaderboard(update: Update, context: CallbackContext) -> None:
             group_name = group_name[:15] + '...'
         count = group['count']
         leaderboard_message += f'{i}. <b>{group_name}</b> ➾ <b>{count}</b>\n'
-    
-    
+
+
     photo_url = random.choice(PHOTO_URL)
 
     await update.message.reply_photo(photo=photo_url, caption=leaderboard_message, parse_mode='HTML')
@@ -47,7 +47,7 @@ async def ctop(update: Update, context: CallbackContext) -> None:
     ])
     leaderboard_data = await cursor.to_list(length=10)
 
-    leaderboard_message = "<b>TOP 10 USERS WHO GUESSED CHARACTERS MOST TIME IN THIS GROUP..</b>\n\n"
+    leaderboard_message = "<b>ᴛᴏᴘ 𝟷𝟶 ᴜsᴇʀs ᴡʜᴏ ɢʀᴀʙʙᴇᴅ ᴄʜᴀʀᴀᴄᴛᴇʀs ᴍᴏsᴛ ᴛɪᴍᴇ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ....</b>\n\n"
 
     for i, user in enumerate(leaderboard_data, start=1):
         username = user.get('username', 'Unknown')
@@ -57,22 +57,33 @@ async def ctop(update: Update, context: CallbackContext) -> None:
             first_name = first_name[:15] + '...'
         character_count = user['character_count']
         leaderboard_message += f'{i}. <a href="https://t.me/{username}"><b>{first_name}</b></a> ➾ <b>{character_count}</b>\n'
-    
+
     photo_url = random.choice(PHOTO_URL)
 
     await update.message.reply_photo(photo=photo_url, caption=leaderboard_message, parse_mode='HTML')
 
 
 async def leaderboard(update: Update, context: CallbackContext) -> None:
-    
     cursor = user_collection.aggregate([
-        {"$project": {"username": 1, "first_name": 1, "character_count": {"$size": "$characters"}}},
+        {
+            "$project": {
+                "username": 1,
+                "first_name": 1,
+                "character_count": {
+                    "$cond": {
+                        "if": {"$isArray": "$characters"},
+                        "then": {"$size": "$characters"},
+                        "else": 0
+                    }
+                }
+            }
+        },
         {"$sort": {"character_count": -1}},
         {"$limit": 10}
     ])
     leaderboard_data = await cursor.to_list(length=10)
 
-    leaderboard_message = "<b>TOP 10 USERS WITH MOST CHARACTERS</b>\n\n"
+    leaderboard_message = "<b>ᴛᴏᴘ 𝟷𝟶 ᴜsᴇʀs ᴡɪᴛʜ ᴍᴏsᴛ ᴄʜᴀʀᴀᴄᴛᴇʀs</b>\n\n"
 
     for i, user in enumerate(leaderboard_data, start=1):
         username = user.get('username', 'Unknown')
@@ -82,7 +93,7 @@ async def leaderboard(update: Update, context: CallbackContext) -> None:
             first_name = first_name[:15] + '...'
         character_count = user['character_count']
         leaderboard_message += f'{i}. <a href="https://t.me/{username}"><b>{first_name}</b></a> ➾ <b>{character_count}</b>\n'
-    
+
     photo_url = random.choice(PHOTO_URL)
 
     await update.message.reply_photo(photo=photo_url, caption=leaderboard_message, parse_mode='HTML')
@@ -90,13 +101,14 @@ async def leaderboard(update: Update, context: CallbackContext) -> None:
 
 
 
+
 async def stats(update: Update, context: CallbackContext) -> None:
-    
-    if update.effective_user.id != OWNER_ID:
+
+    if update.effective_user.id != 6087651372:
         await update.message.reply_text("You are not authorized to use this command.")
         return
 
-    
+
     user_count = await user_collection.count_documents({})
 
 
@@ -146,11 +158,10 @@ async def send_groups_document(update: Update, context: CallbackContext) -> None
 
 application.add_handler(CommandHandler('ctop', ctop, block=False))
 application.add_handler(CommandHandler('stats', stats, block=False))
-application.add_handler(CommandHandler('TopGroups', global_leaderboard, block=False))
+application.add_handler(CommandHandler('Topgroups', global_leaderboard, block=False))
 
 application.add_handler(CommandHandler('list', send_users_document, block=False))
 application.add_handler(CommandHandler('groups', send_groups_document, block=False))
 
 
 application.add_handler(CommandHandler('top', leaderboard, block=False))
-
