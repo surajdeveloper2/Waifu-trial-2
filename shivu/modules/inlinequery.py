@@ -66,7 +66,6 @@ async def inlinequery(update: Update, context: CallbackContext) -> None:
 
     results = []
     for character in characters:
-        global_count = await user_collection.count_documents({'characters.id': character['id']})
         anime_characters = await collection.count_documents({'anime': character['anime']})
 
         if query.startswith('collection.'):
