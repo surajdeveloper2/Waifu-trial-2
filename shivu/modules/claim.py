@@ -87,7 +87,7 @@ async def claim(_, message: t.Message):
             await message.reply_text("You need to join the chat to use this feature.", reply_markup=keyboard)
             return 
         if chat_id != SUPPORT_CHAT_ID:
-            return await message.reply_text("Command can only be used here: @Grabbing_Your_WH_Group")
+            return await message.reply_text("Command can only be used here: @ntpcraj")
 
         mention = message.from_user.mention
 
