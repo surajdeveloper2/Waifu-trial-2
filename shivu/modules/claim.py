@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 DEVS = (6087651372)
 
-async def get_unique_characters(receiver_id, target_rarities=['⚪ Common', '🟣 Normal', '🔵 Medium']):
+async def get_unique_characters(receiver_id, target_rarities=['⚪ 𝙲𝚘𝚖𝚖𝚘𝚗', '🟢 𝙼𝚎𝚍𝚒𝚞𝚖', '🟣 𝚁𝚊𝚛𝚎', '🟡 𝙻𝚒𝚖𝚒𝚝𝚎𝚍']):
     try:
         pipeline = [
             {'$match': {'rarity': {'$in': target_rarities}, 'id': {'$nin': [char['id'] for char in (await user_collection.find_one({'id': receiver_id}, {'characters': 1}))['characters']]}}},
@@ -23,7 +23,7 @@ async def get_unique_characters(receiver_id, target_rarities=['⚪ Common', '�
 # Dictionary to store last claim time for each user
 last_claim_time = {}
 
-@bot.on_message(filters.command(["hclaim"]))
+@bot.on_message(filters.command(["claim", "hclaim"]))
 async def hclaim(_, message: t.Message):
     chat_id = message.chat.id
     mention = message.from_user.mention
@@ -39,7 +39,7 @@ async def hclaim(_, message: t.Message):
         last_claim_date = last_claim_time[user_id]
         if last_claim_date.date() == now.date():
             next_claim_time = (last_claim_date + timedelta(days=1)).strftime("%H:%M:%S")
-            return await message.reply_text(f"𝑲𝒂𝒍 𝑨𝒏𝒂 𝑲𝒂𝒍 😂", quote=True)
+            return await message.reply_text(f"𝑌𝑜𝑢 𝐴𝑙𝑟𝑒𝑎𝑑𝑦 𝐶𝑙𝑎𝑖𝑚𝑒𝑑 𝐷𝑎𝑖𝑙𝑦 𝑟𝑒𝑤𝑎𝑟𝑑", quote=True)
 
     # Update the last claim time for the user
     last_claim_time[user_id] = now
@@ -47,6 +47,7 @@ async def hclaim(_, message: t.Message):
     receiver_id = message.from_user.id
     unique_characters = await get_unique_characters(receiver_id)
     try:
+        await message.reply_text("Getting your Claim")
         await user_collection.update_one({'id': receiver_id}, {'$push': {'characters': {'$each': unique_characters}}})
         img_urls = [character['img_url'] for character in unique_characters]
         captions = [
