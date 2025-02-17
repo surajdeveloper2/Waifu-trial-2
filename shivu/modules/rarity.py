@@ -16,7 +16,9 @@ RARITY_MAP = {
     "5": "💮 Special Edition",
     "6": "🔮 Limited Edition",
     "7": "🫧 Premium", 
-    "8": ""
+    "8": "🫦 Sexy",
+    "9": "🍑 sultry",
+    "10": "🥵 Heaven"
 }
 
 selected_rarity = None
