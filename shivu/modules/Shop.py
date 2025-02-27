@@ -27,13 +27,13 @@ async def buy(update, context):
 
     # Determine the coin cost based on the rarity of the character
     rarity_coin_mapping = {
-        "🟢 Common": 2000000,
+        "⚪ Common": 2000000,
         "🔵 Medium": 4000000,
-        "🟠 Rare": 8000000,
-        "🟡 Legendary": 1500000,
-        "🪽 celestial": 20000000,
-        "💮 Exclusive": 300000000,
-        "🥴 Spacial": 400000000000,
+        "🟣 Normal": 8000000,
+        "🎗️ Legendary": 1500000,
+        "💮 Special Edition": 20000000,
+        "🔮 Limited Edition": 300000000,
+        "🔮 premium": 400000000000,
         "💎 Premium": 2000000000000000000,
         "🔮 Limited": 6000000000000000000,
     }
