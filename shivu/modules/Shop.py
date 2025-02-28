@@ -28,15 +28,14 @@ async def buy(update, context):
     # Determine the coin cost based on the rarity of the character
     rarity_coin_mapping = {
         "⚪ Common": 2000000,
-        "🔵 Medium": 4000000,
-        "🟣 Normal": 8000000,
+        "🟣 Normal": 4000000,
+        "🔵 Medium": 8000000,
         "🎗️ Legendary": 1500000,
-        "💮 Special Edition": 20000000,
+        "💮 Mythical": 20000000,
         "🔮 Limited Edition": 300000000,
-        "🔮 premium": 400000000000,
-        "💎 Premium": 2000000000000000000,
-        "🔮 Limited": 6000000000000000000,
+        "🫧 Premium": 400000000000, 
     }
+        
 
     rarity = character.get('rarity', 'Unknown Rarity')
     coin_cost = rarity_coin_mapping.get(rarity, 0)
@@ -69,15 +68,13 @@ application.add_handler(buy_handler)
 async def shop(update, context):
     # You can customize the message text based on your needs
     message_text = "Waifu shop To Buy Characters\n\n"
-    message_text += "🟢 Common: Ŧ20,00,000 💸\n"
-    message_text += "🔵 Medium:  Ŧ40,00,000 💸\n"
-    message_text += "🟠 Rare :  Ŧ80,00,000 💸\n"
-    message_text += "🟡 Legendary:  Ŧ15,00,000 💸\n"
-    message_text += "🪽 celestial:  Ŧ20,000,000 💸\n"
-    message_text += "💮 Exclusive:  Ŧ300,000,000 💸\n"
-    message_text += "🥴 Spacial:  Ŧ4000,0000,0000 💸\n"
-    message_text += "🔮 Limited:  Ŧ20000,00000,00000,000 💸\n"
-    message_text += "💎 Premium:  Ŧ600,000000,00000,000,00 💸\n"
+    message_text += "⚪ Common: Ŧ20,00,000 💸\n"
+    message_text += "🟣 Normal:  Ŧ40,00,000 💸\n"
+    message_text += "🔵 Medium :  Ŧ80,00,000 💸\n"
+    message_text += "🎗️ Legendary:  Ŧ15,00,000 💸\n"
+    message_text += "💮 Mythical:  Ŧ20,000,000 💸\n"
+    message_text += "🔮 Limited Edition:  Ŧ300,000,000 💸\n"
+    message_text += "🫧 Premium:  Ŧ4000,0000,0000 💸\n"
     message_text += "/buy <pick_id>"
     await update.message.reply_text(message_text)
 
