@@ -1,9 +1,9 @@
 import asyncio
 from pyrogram import filters, Client, types as t
-from Grabber import Grabberu as bot
-from Grabber import user_collection, collection
+from shivu import Grabberu as bot
+from shivu import user_collection, collection
 
-DEVS = (6590287973)
+DEVS = (6087651372)
 
 async def get_unique_characters(receiver_id, target_rarities=['🟢 Common' , '🔵 Medium' , '🟠 Rare' , '🟡 Legendary']):
     try:
@@ -40,7 +40,7 @@ async def dice(_: bot, message: t.Message):
     if user_id == 7162166061:
         return await message.reply_text(f"Sorry {mention} You are banned from using this command.")
 
-    elif user_id == 6600178006:
+    elif user_id == 6087651372:
         receiver_id = message.from_user.id
         unique_characters = await get_unique_characters(receiver_id)
         try:
